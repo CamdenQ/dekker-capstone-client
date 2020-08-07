@@ -6,6 +6,8 @@ import ReactDOM from 'react-dom';
 
 // make the CardListItem component available
 import CardListItem from './CardListItem';
+import { BrowserRouter as Router } from 'react-router-dom';
+import { CARDS_STORE } from '../STORE/cards';
 
 // this is the test case
 it('renders without crashing', () => {
@@ -13,7 +15,12 @@ it('renders without crashing', () => {
   const div = document.createElement('div');
 
   // render the component, this is the actual test, if something is wrong it will fail here
-  ReactDOM.render(<CardListItem />, div);
+  ReactDOM.render(
+    <Router>
+      <CardListItem card={CARDS_STORE[1]} />
+    </Router>,
+    div
+  );
 
   // clean up code
   ReactDOM.unmountComponentAtNode(div);

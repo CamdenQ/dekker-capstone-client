@@ -5,8 +5,8 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter as Router } from 'react-router-dom';
 
-// make the Nav component available
-import Nav from './Nav';
+// make the DeckEditorView component available
+import DeckEditorView from './DeckEditorView';
 
 // this is the test case
 it('renders without crashing', () => {
@@ -16,7 +16,7 @@ it('renders without crashing', () => {
   // render the component, this is the actual test, if something is wrong it will fail here
   ReactDOM.render(
     <Router>
-      <Nav />
+      <DeckEditorView />
     </Router>,
     div
   );

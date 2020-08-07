@@ -3,6 +3,7 @@ import React from 'react';
 
 // make the ReactDOM available, necessary for rendering the component
 import ReactDOM from 'react-dom';
+import { BrowserRouter as Router } from 'react-router-dom';
 
 // make the CardsList component available
 import CardsList from './CardsList';
@@ -13,7 +14,12 @@ it('renders without crashing', () => {
   const div = document.createElement('div');
 
   // render the component, this is the actual test, if something is wrong it will fail here
-  ReactDOM.render(<CardsList />, div);
+  ReactDOM.render(
+    <Router>
+      <CardsList />
+    </Router>,
+    div
+  );
 
   // clean up code
   ReactDOM.unmountComponentAtNode(div);

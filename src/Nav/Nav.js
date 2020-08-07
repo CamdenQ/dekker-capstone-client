@@ -7,10 +7,10 @@ class Nav extends Component {
     return (
       <nav>
         <div className="left-nav nav-box">
-          <Link to="">My Decks</Link>
+          <Link to="/decks">Decks</Link>
         </div>
         <div className="right-nav nav-box">
-          <Link to="/decks">Log Out</Link>
+          <Link to="/cards">Home</Link>
         </div>
       </nav>
     );

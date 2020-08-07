@@ -3,9 +3,11 @@ import React from 'react';
 
 // make the ReactDOM available, necessary for rendering the component
 import ReactDOM from 'react-dom';
+import { BrowserRouter as Router } from 'react-router-dom';
 
 // make the DeckContentsItem component available
 import DeckContentsItem from './DeckContentsItem';
+import { CARDS_STORE } from '../STORE/cards';
 
 // this is the test case
 it('renders without crashing', () => {
@@ -13,7 +15,12 @@ it('renders without crashing', () => {
   const div = document.createElement('div');
 
   // render the component, this is the actual test, if something is wrong it will fail here
-  ReactDOM.render(<DeckContentsItem />, div);
+  ReactDOM.render(
+    <Router>
+      <DeckContentsItem card={CARDS_STORE[0]} />
+    </Router>,
+    div
+  );
 
   // clean up code
   ReactDOM.unmountComponentAtNode(div);

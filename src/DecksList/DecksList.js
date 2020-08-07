@@ -3,9 +3,6 @@ import DecksListItem from '../DecksListItem/DecksListItem';
 
 export default function DecksList(props) {
   const decks = props.decks;
-  console.log('Decks:');
-  console.table(decks);
-  console.log(decks);
   return (
     <div class="wrapper">
       <header>

@@ -4,16 +4,29 @@ import { CARDS_STORE } from '../STORE/cards';
 import './DeckContents.css';
 
 export default function DeckContents(props) {
+  // if (!props.decks || props.decks.length === 0) {
+  //   return (
+  //     <div>
+  //       <p>Loading...</p>
+  //     </div>
+  //   );
+  // }
+  // if (!props.match) {
+  //   return (
+  //     <div>
+  //       <p>Loading...</p>
+  //     </div>
+  //   );
+  // }
+
+  console.log(props);
+
   const deckID = props.match.params.deckID;
-  console.log(`Deck ID: ${deckID}`);
   const deck = props.decks[deckID];
-  console.log(`User Deck: `);
-  console.table(props.deck);
+
   const deckName = deck.name;
-  console.log(`Deck Name: ${deckName}`);
-  const deckContents = deck.contents;
-  console.log('Deck contents:');
-  console.table(deckContents);
+
+  const deckContents = deck.contents.split(',');
 
   return (
     <section className="deck-contents">
