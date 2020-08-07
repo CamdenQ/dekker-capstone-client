@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#000000" />
+  <meta name="description" content="Web site created using create-react-app" />
+  <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
+  <!--
+      manifest.json provides metadata used when your web app is installed on a
+      user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
+    -->
+  <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+  <!--
+      Notice the use of %PUBLIC_URL% in the tags above.
+      It will be replaced with the URL of the `public` folder during the build.
+      Only files inside the `public` folder can be referenced from the HTML.
+
+      Unlike "/favicon.ico" or "favicon.ico", "%PUBLIC_URL%/favicon.ico" will
+      work correctly both with client-side routing and a non-root public URL.
+      Learn how to configure a non-root public URL by running `npm run build`.
+    -->
+  <title>React App</title>
+  <link rel="stylesheet" type="text/css" href="design.css" />
+</head>
+
+<body>
+  <noscript>You need to enable JavaScript to run this app.</noscript>
+  <div id="root">
+    <div class="wrapper">
+      <header>
+        <h1>Deck View</h1>
+      </header>
+      <section class="top-bar">
+        <select name="block-select" id="block-select">
+          <option value="">Block</option>
+          <option value="Test Block 1">Test Block 1</option>
+          <option value="Test Block 2">Test Block 2</option>
+        </select>
+        <select name="set-select" id="set-select">
+          <option value="">Set</option>
+          <option value="Test Set 1">Test Set 1</option>
+          <option value="Test Set 2">Test Set 2</option>
+        </select>
+        <fieldset>
+          <legend>Color</legend>
+          <input type="checkbox" id="red" name="color" value="red" />
+          <label for="red">R</label>
+          <input type="checkbox" id="black" name="color" value="black" />
+          <label for="Black">B</label>
+          <input type="checkbox" id="blue" name="color" value="blue" />
+          <label for="blue">U</label>
+          <input type="checkbox" id="white" name="color" value="white" />
+          <label for="white">W</label>
+          <input type="checkbox" id="green" name="color" value="green" />
+          <label for="green">G</label>
+        </fieldset>
+        <fieldset>
+          <legend>Test Card Type</legend>
+          <input type="checkbox" id="creature" name="type" value="creature" />
+          <label for="creature">Creatures</label>
+          <input type="checkbox" id="planeswalker" name="type" value="planeswalker" />
+          <label for="planeswalker">Planeswalkers</label><br />
+          <input type="checkbox" id="artifact" name="type" value="artifact" />
+          <label for="Artifact">Artifacts</label>
+          <input type="checkbox" id="enchantment" name="type" value="enchantment" />
+          <label for="enchantment">Enchantments</label><br />
+          <input type="checkbox" id="sorcery" name="type" value="sorcery" />
+          <label for="sorcery">Sorcery</label>
+          <input type="checkbox" id="instant" name="type" value="instant" />
+          <label for="instant">Instants</label>
+          <input type="checkbox" id="land" name="type" value="land" />
+          <label for="land">Lands</label>
+        </fieldset>
+        <fieldset>
+          <button>Advanced Options</button>
+        </fieldset>
+        <div class="flex row">
+          <section class="deck-contents">
+            <span>Test Deck</span>
+            <span>------</span>
+            <ul class="deck-list">
+              <li class="deck-card">Test Card 1</li>
+              <li class="deck-card">Test Card 2</li>
+              <li class="deck-card">Test Card 3</li>
+              <li class="deck-card">Test Card 4</li>
+              <li class="deck-card">Test Card 5</li>
+              <li class="deck-card">Test Card 6</li>
+              <li class="deck-card">Test Card 7</li>
+              <li class="deck-card">Test Card 8</li>
+              <li class="deck-card">Test Card 9</li>
+              <li class="deck-card">Test Card 0</li>
+              <li class="deck-card">Test Card A</li>
+              <li class="deck-card">Test Card B</li>
+            </ul>
+            <button>Save Deck</button>
+          </section>
+          <section class="database-list">filtered list of card images goes here</section>
+        </div>
+    </div>
+</body>
+
+</html>

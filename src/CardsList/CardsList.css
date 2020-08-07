@@ -1,0 +1,31 @@
+.align-center {
+  justify-content: center;
+}
+
+.page-button {
+  border: none;
+  background: none;
+}
+
+.database-list {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  flex-grow: 1;
+  flex-shrink: 1;
+  width: 100%;
+  padding: 2%;
+  overflow: auto;
+  height: 100%;
+}
+
+.card-img-container {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 5px;
+  justify-content: space-evenly;
+}
+
+.card-img {
+  margin: 5px;
+}

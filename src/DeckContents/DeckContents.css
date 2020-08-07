@@ -1,0 +1,20 @@
+.deck-contents {
+  border-right: 1px solid;
+  text-align: center;
+  width: 30%;
+  min-width: 20%;
+  overflow-y: auto;
+  overflow-x: none;
+}
+
+.deck-list {
+  list-style-type: none;
+  padding: none;
+  overflow: scroll;
+}
+
+.deck-card {
+  border: 1px solid;
+  border-radius: 4px;
+  margin: 2%;
+}

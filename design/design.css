@@ -8,7 +8,6 @@ STATIC LAYOUT CSS
 }
 
 .top-bar,
-.options,
 .side-bar,
 .main-section {
   width: 100%;
@@ -28,28 +27,6 @@ STATIC LAYOUT CSS
 CSS TO MAKE THE EXAMPLE LOOK PRETTY
 **************************************/
 
-html,
-body,
-div,
-img {
-  margin: 0;
-  padding: 0;
-  border: 0;
-  font-size: 100%;
-  font: inherit;
-  vertical-align: baseline;
-}
-
-html,
-body {
-  height: 100%;
-}
-
-.wrap {
-  height: 100vh;
-  display: flex;
-}
-
 *,
 *:before,
 *:after {
@@ -59,12 +36,9 @@ body {
 }
 
 body {
-  position: absolute;
   font-family: Helvetica;
   text-align: center;
   margin: 0;
-  background-color: dimgrey;
-  width: 100vw;
 }
 
 ul {
@@ -73,25 +47,6 @@ ul {
   padding: 0;
 }
 
-nav {
-  display: flex;
-  margin: auto;
-}
-
-.nav-box {
-  width: 50%;
-  margin: auto;
-}
-
-a {
-  margin: auto 2%;
-}
-
-main {
-  width: 100%;
-}
-
-main,
 .top-bar,
 .side-bar,
 .main-section {
@@ -101,8 +56,7 @@ main,
 }
 
 .top-bar,
-.side-bar,
-main {
+.side-bar {
   padding: 20px 0;
 }
 
@@ -110,17 +64,33 @@ main {
   padding: 20.83% 0;
 }
 
-.cards-sections {
-  position: relative;
-  height: 60vh;
+.database-list {
+  padding: 40% 0;
+}
+
+.deck-contents {
+  border-right: 1px solid;
+  text-align: center;
 }
 
 .flex {
   display: flex;
 }
 
+.deck-card {
+  border: 1px solid;
+  border-radius: 4px;
+  margin: 2%;
+}
+
 .row {
   flex-direction: row;
+}
+
+.deck-list {
+  list-style-type: none;
+  padding: none;
+  overflow: scroll;
 }
 
 /* .signup-form {

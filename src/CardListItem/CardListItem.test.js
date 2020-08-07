@@ -4,8 +4,8 @@ import React from 'react';
 // make the ReactDOM available, necessary for rendering the component
 import ReactDOM from 'react-dom';
 
-// make the App component available
-import App from './App';
+// make the CardListItem component available
+import CardListItem from './CardListItem';
 
 // this is the test case
 it('renders without crashing', () => {
@@ -13,7 +13,7 @@ it('renders without crashing', () => {
   const div = document.createElement('div');
 
   // render the component, this is the actual test, if something is wrong it will fail here
-  ReactDOM.render(<App />, div);
+  ReactDOM.render(<CardListItem />, div);
 
   // clean up code
   ReactDOM.unmountComponentAtNode(div);

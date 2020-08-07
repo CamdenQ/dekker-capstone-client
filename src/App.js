@@ -1,26 +1,47 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { Component } from 'react';
+import { withRouter, Route } from 'react-router-dom';
+import Nav from './Nav/Nav';
+import CardsDBView from './CardsDBView/CardsDBView';
+import Landing from './Landing/Landing';
+import DecksList from './DecksList/DecksList';
+import DeckApiService from './services/deck-api-service';
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+  state = {
+    decks: [],
+    cardTypes: [],
+    cardColors: [],
+  };
+
+  componentDidMount() {
+    DeckApiService.getDecks().then((res) => this.setState({ decks: res }));
+  }
+
+  render() {
+    return (
+      <div className="wrapper">
+        <Nav />
+        <header>
+          <h1>DEKKER</h1>
+          <p>An MTG Deck Builder</p>
+        </header>
+        <main>
+          <Route exact path="/" component={Landing} />
+          <Route
+            path="/cards"
+            render={() => <CardsDBView testProp="whatever" />}
+          />
+          <Route
+            path="/decks"
+            render={() => {
+              return <DecksList decks={this.state.decks} />;
+            }}
+          />
+        </main>
+      </div>
+    );
+  }
 }
 
-export default App;
+export default withRouter(App);
