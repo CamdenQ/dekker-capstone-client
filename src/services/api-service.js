@@ -1,6 +1,12 @@
 import config from '../config';
 
-const DeckApiService = {
+const ApiService = {
+  getCards() {
+    return fetch(`${config.API_ENDPOINT}/api/cards`, {}).then((res) =>
+      !res.ok ? res.json().then((e) => Promise.reject(e)) : res.json()
+    );
+  },
+
   getDecks() {
     return fetch(`${config.API_ENDPOINT}/api/decks`, {}).then((res) =>
       !res.ok ? res.json().then((e) => Promise.reject(e)) : res.json()
@@ -8,7 +14,7 @@ const DeckApiService = {
   },
 
   getDeck(id) {
-    return fetch(`${config.API_ENDPOINT}/api/decks/:${id}`).then((res) =>
+    return fetch(`${config.API_ENDPOINT}/api/decks/${id}`).then((res) =>
       !res.ok ? res.json().then((e) => Promise.reject(e)) : res.json()
     );
   },
@@ -25,20 +31,27 @@ const DeckApiService = {
     );
   },
 
-  removeUserDeck(user_id, id) {
-    return fetch(`${config.API_ENDPOINT}/user-decks/${user_id}/${id}`, {
+  updateDeck(deck) {
+    return fetch(`${config.API_ENDPOINT}/api/decks/${deck.id}`, {
+      method: 'PATCH',
+      headers: {
+        'content-type': 'application/json',
+      },
+      body: JSON.stringify(deck),
+    }).then((res) =>
+      !res.ok ? res.json().then((e) => Promise.reject(e)) : res.json()
+    );
+  },
+
+  deleteDeck(id) {
+    return fetch(`${config.API_ENDPOINT}/api/decks/${id}`, {
       method: 'DELETE',
       headers: {
         'content-type': 'application/json',
       },
-      body: JSON.stringify({ user_id, id: id }),
-    })
-      .then((res) => {
-        return res;
-      })
-      .then((res) =>
-        !res.ok ? res.json().then((e) => Promise.reject(e)) : res.json()
-      );
+    }).then((res) =>
+      !res.ok ? res.json().then((e) => Promise.reject(e)) : res.json()
+    );
   },
 
   getDeckBySearch(keyword, filter) {
@@ -51,4 +64,4 @@ const DeckApiService = {
   },
 };
 
-export default DeckApiService;
+export default ApiService;

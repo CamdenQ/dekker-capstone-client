@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
-import { withRouter, Route } from 'react-router-dom';
+import { withRouter, Route, Switch } from 'react-router-dom';
 import Nav from './Nav/Nav';
 import CardsDBView from './CardsDBView/CardsDBView';
 import Landing from './Landing/Landing';
 import DecksList from './DecksList/DecksList';
-import DeckApiService from './services/deck-api-service';
+import ApiService from './services/api-service';
 import DeckEditorView from './DeckEditorView/DeckEditorView';
-import { CARDS_STORE } from './STORE/cards';
 import './App.css';
+import NotFound from './NotFound/NotFound';
 
 class App extends Component {
   constructor(props) {
@@ -15,7 +15,14 @@ class App extends Component {
 
     this.state = {
       decks: [],
-      cards: CARDS_STORE,
+      cards: [],
+      selected: [],
+      currentDeckID: 0,
+      currentDeck: { contents: [] },
+
+      namingDeck: false,
+
+      isFiltered: false,
 
       isRed: false,
       isBlack: false,
@@ -31,27 +38,27 @@ class App extends Component {
       isInstant: false,
       isLand: false,
 
-      cardColors: [],
-      cardTypes: [],
-
       filteredCards: [],
     };
 
     this.handleFilterChange = this.handleFilterChange.bind(this);
+    this.setDeckToSelected = this.setDeckToSelected.bind(this);
+    this.handleCardListItemClick = this.handleCardListItemClick.bind(this);
+    this.handleClickNewDeck = this.handleClickNewDeck.bind(this);
+    this.handleCancelNewDeck = this.handleCancelNewDeck.bind(this);
+    this.handleDeckContentsItemClick = this.handleDeckContentsItemClick.bind(
+      this
+    );
+    this.handleClickSaveDeck = this.handleClickSaveDeck.bind(this);
+    this.updateCurrentDeck = this.updateCurrentDeck.bind(this);
+    this.handleSubmitNewDeck = this.handleSubmitNewDeck.bind(this);
+    this.handleClickDelete = this.handleClickDelete.bind(this);
   }
 
-  handleFilterChange(event) {
-    console.log(event.target.id + ' changed!');
-    this.setState({ [event.target.id]: !this.state[event.target.id] });
-    console.log(this.state);
-  }
-
-  componentDidMount() {
-    DeckApiService.getDecks().then((res) => this.setState({ decks: res }));
-
+  filterCards() {
     let cardColors = [],
       cardTypes = [],
-      filteredCards = [];
+      filteredCards = this.state.cards;
 
     if (this.state.isRed) {
       cardColors.push('Red');
@@ -101,159 +108,187 @@ class App extends Component {
       cardTypes.push('Land');
     }
 
-    if (cardColors) {
-      cardColors.map((color) => {
-        this.state.cards.map((card) => {
-          if (card.colors.includes(color)) {
-            filteredCards.push(card);
+    if (cardColors.length > 0) {
+      filteredCards = filteredCards.filter((card) => {
+        for (let i = 0; i < cardColors.length; i++) {
+          if (card.colors.includes(cardColors[i])) {
+            return true;
           }
-        });
+        }
+        return false;
       });
     }
 
-    if (cardTypes) {
-      cardTypes.map((type) => {
-        this.state.cards.map((card) => {
-          if (card.types.includes(type)) {
-            filteredCards.push(card);
+    if (cardTypes.length > 0) {
+      filteredCards = filteredCards.filter((card) => {
+        for (let i = 0; i < cardTypes.length; i++) {
+          if (card.types.includes(cardTypes[i])) {
+            return true;
           }
-        });
+        }
+        return false;
       });
     }
 
     if (
-      this.state.cardColors.length === 0 &&
-      this.state.cardTypes.length === 0
+      this.state.filteredCards.sort().toString() !==
+      filteredCards.sort().toString()
     ) {
-      this.state.cards.map((card) => filteredCards.push(card));
+      this.setState({ filteredCards: filteredCards });
     }
-
-    this.setState({ filteredCards: filteredCards });
   }
 
-  // componentDidUpdate() {
-  //   let cardColors = [],
-  //     cardTypes = [],
-  //     filteredCards = [];
+  updateCurrentDeck(deckID) {
+    console.log(`Deck ID Passed into updateCurrentDeck: ${deckID}`);
+    console.log(
+      `Type of value passed as deckID into updateCurrentDeck: ${typeof deckID}`
+    );
+    ApiService.getDeck(deckID).then((res) =>
+      this.setState({ currentDeck: res })
+    );
+  }
 
-  //   if (this.state.isRed) {
-  //     cardColors.push('Red');
-  //   }
+  setDeckToSelected(deck) {
+    console.log(`Deck passed into setDeckToSelected:`);
+    console.table(deck);
+    let selected = deck.contents.sort();
+    console.log(`Selected array set to state:`);
+    console.log(selected);
+    this.setState({ selected: [...selected] });
+  }
 
-  //   if (this.state.isBlack) {
-  //     cardColors.push('Black');
-  //   }
+  handleCardListItemClick(e) {
+    const newCardID = e.target.getAttribute('card_id');
+    let selected = this.state.selected;
+    selected.push(newCardID);
+    selected = selected.sort();
+    this.setState({ selected: selected });
+  }
 
-  //   if (this.state.isBlue) {
-  //     cardColors.push('Blue');
-  //   }
+  handleDeckContentsItemClick(e) {
+    const index = e.target.getAttribute('card_index');
+    const selected = this.state.selected;
 
-  //   if (this.state.isWhite) {
-  //     cardColors.push('White');
-  //   }
+    selected.splice(index, 1);
+    this.setState({ selected: [...selected] });
+  }
 
-  //   if (this.state.isGreen) {
-  //     cardColors.push('Green');
-  //   }
+  handleFilterChange(e) {
+    this.setState({ [e.target.id]: !this.state[e.target.id] });
+  }
 
-  //   if (this.state.isCreature) {
-  //     cardTypes.push('Creature');
-  //   }
+  handleClickNewDeck() {
+    this.setState({ namingDeck: true });
+  }
 
-  //   if (this.state.isPlaneswalker) {
-  //     cardTypes.push('Planeswalker');
-  //   }
+  handleSubmitNewDeck(e) {
+    e.preventDefault();
+    const deckTitle = document.getElementById('deck-title').value,
+      deck = { title: deckTitle, contents: [] };
 
-  //   if (this.state.isArtifact) {
-  //     cardTypes.push('Artifact');
-  //   }
+    ApiService.postDeck(deck);
+  }
 
-  //   if (this.state.isEnchantment) {
-  //     cardTypes.push('Enchantment');
-  //   }
+  handleCancelNewDeck() {
+    this.setState({ namingDeck: false });
+  }
 
-  //   if (this.state.isSorcery) {
-  //     cardTypes.push('Sorcery');
-  //   }
+  handleClickSaveDeck() {
+    const deck = {
+      id: this.state.currentDeck.id,
+      title: this.state.currentDeck.title,
+      contents: this.state.selected,
+    };
 
-  //   if (this.state.isInstant) {
-  //     cardTypes.push('Instant');
-  //   }
+    ApiService.updateDeck(deck);
+  }
 
-  //   if (this.state.isLand) {
-  //     cardTypes.push('Land');
-  //   }
+  handleClickDelete() {
+    console.log('Delete clicked!');
+    const id = Number(this.state.currentDeck.id);
 
-  //   if (cardColors) {
-  //     cardColors.map((color) => {
-  //       this.state.cards.map((card) => {
-  //         if (card.colors.includes(color)) {
-  //           filteredCards.push(card);
-  //         }
-  //       });
-  //     });
-  //   }
+    console.log(`ID of deck to be deleted: ${id}`);
 
-  //   if (cardTypes) {
-  //     cardTypes.map((type) => {
-  //       this.state.cards.map((card) => {
-  //         if (card.types.includes(type)) {
-  //           filteredCards.push(card);
-  //         }
-  //       });
-  //     });
-  //   }
+    ApiService.deleteDeck(id);
+  }
 
-  //   if (
-  //     this.state.cardColors.length === 0 &&
-  //     this.state.cardTypes.length === 0
-  //   ) {
-  //     this.state.cards.map((card) => filteredCards.push(card));
-  //   }
+  componentDidMount() {
+    ApiService.getDecks().then((res) => this.setState({ decks: res }));
+    ApiService.getCards().then((res) => this.setState({ cards: res }));
 
-  //   this.setState({ filteredCards: filteredCards });
-  // }
+    this.filterCards();
+  }
+
+  componentDidUpdate() {
+    this.filterCards();
+  }
 
   render() {
+    const decks = this.state.decks;
     return (
-      <div className="wrapper">
+      <>
         <Nav />
         <header>
           <h1>DEKKER</h1>
           <p>An MTG Deck Builder</p>
         </header>
         <main>
-          <Route exact path="/" component={Landing} />
-          <Route
-            exact
-            path="/cards"
-            render={() => (
-              <CardsDBView
-                decks={this.state.decks}
-                onChange={this.handleFilterChange}
-                cards={this.state.filteredCards}
-              />
-            )}
-          />
-          <Route
-            exact
-            path="/decks/:deckID"
-            render={(props) => (
-              <DeckEditorView
-                decks={this.state.decks}
-                onChange={this.handleFilterChange}
-                cards={this.state.filteredCards}
-              />
-            )}
-          />
-          <Route
-            path="/decks"
-            render={(props) => {
-              return <DecksList decks={this.state.decks} />;
-            }}
-          />
+          <Switch>
+            <Route exact path="/" component={Landing} />
+            <Route
+              exact
+              path="/cards"
+              render={() => (
+                <CardsDBView
+                  decks={this.state.decks}
+                  onFilterChange={this.handleFilterChange}
+                  cards={this.state.filteredCards}
+                  namingDeck={this.state.namingDeck}
+                  onClickNewDeck={this.handleClickNewDeck}
+                  onSubmitNewDeck={this.handleSubmitNewDeck}
+                  onCancelNewDeck={this.handleCancelNewDeck}
+                />
+              )}
+            />
+            <Route
+              exact
+              path="/decks"
+              render={(props) => {
+                return (
+                  <DecksList
+                    decks={this.state.decks}
+                    namingDeck={this.state.namingDeck}
+                    onClickNewDeck={this.handleClickNewDeck}
+                    onSubmitNewDeck={this.handleSubmitNewDeck}
+                    onCancelNewDeck={this.handleCancelNewDeck}
+                    onClickDelete={this.handleClickDelete}
+                  />
+                );
+              }}
+            />
+            <Route
+              path="/decks/:deckID"
+              render={(props) => (
+                <DeckEditorView
+                  decks={decks}
+                  deck={this.state.currentDeck}
+                  selected={this.state.selected}
+                  onFilterChange={this.handleFilterChange}
+                  onCardListItemClick={this.handleCardListItemClick}
+                  onDeckContentsItemClick={this.handleDeckContentsItemClick}
+                  setDeckToSelected={this.setDeckToSelected}
+                  onClickSave={this.handleClickSaveDeck}
+                  updateCurrentDeck={this.updateCurrentDeck}
+                  onClickDelete={this.handleClickDelete}
+                  cards={this.state.filteredCards}
+                  {...props}
+                />
+              )}
+            />
+            <Route component={NotFound} />
+          </Switch>
         </main>
-      </div>
+      </>
     );
   }
 }

@@ -2,11 +2,6 @@
   justify-content: center;
 }
 
-.page-button {
-  border: none;
-  background: none;
-}
-
 .database-list {
   display: flex;
   flex-wrap: wrap;

@@ -1,4 +1,5 @@
 import React from 'react';
+import './FilterOptions.css';
 
 export default function FilterOptions(props) {
   return (
@@ -69,9 +70,9 @@ export default function FilterOptions(props) {
           <input
             onChange={props.onChange}
             type="checkbox"
-            id="artifact"
+            id="isArtifact"
             name="type"
-            value="artifact"
+            value="Artifact"
           />
           <label htmlFor="Artifact">Artifacts</label>
           <input

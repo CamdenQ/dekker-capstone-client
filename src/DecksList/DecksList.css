@@ -1,0 +1,70 @@
+.new-deck-form {
+  width: 300px;
+  margin: auto;
+}
+
+.deck-link-button,
+.new-deck-button,
+.new-deck-form input {
+  display: flex;
+  border: solid;
+  width: 300px;
+  margin: auto;
+  padding: 2%;
+  justify-content: space-between;
+  background: none;
+  font-size: 18px;
+}
+
+/* .new-deck-form input {
+  padding-right: 100px;
+} */
+
+.new-deck-buttons {
+  justify-content: right;
+  text-align: right;
+}
+
+.new-deck-cancel,
+.new-deck-submit {
+  /* margin-left: -100px; */
+  border: none;
+  background: none;
+  font-size: 35px;
+  margin: auto;
+}
+
+/* .new-deck-submit {
+  margin-left: -100px;
+  border: none;
+  background: none;
+  font-size: 35px;
+  float: right;
+} */
+
+.new-deck-submit:hover {
+  color: greenyellow;
+}
+
+.new-deck-cancel:hover {
+  color: red;
+}
+
+.new-deck-button:hover,
+.deck-link-button:hover {
+  color: goldenrod;
+}
+
+.decks-list {
+  justify-content: center;
+}
+
+.decks-list li a {
+  text-decoration: none;
+  color: inherit;
+  font-size: 15px;
+}
+
+.decks-list li a:hover {
+  color: goldenrod;
+}

@@ -6,11 +6,14 @@ class Nav extends Component {
   render() {
     return (
       <nav>
-        <div className="left-nav nav-box">
-          <Link to="/decks">Decks</Link>
+        <div className="nav-box">
+          <Link to="/">Home</Link>
         </div>
-        <div className="right-nav nav-box">
-          <Link to="/cards">Home</Link>
+        <div className="nav-box">
+          <Link to="/cards">Cards</Link>
+        </div>
+        <div className="nav-box">
+          <Link to="/decks">Decks</Link>
         </div>
       </nav>
     );

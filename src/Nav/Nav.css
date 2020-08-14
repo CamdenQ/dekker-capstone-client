@@ -1,3 +1,13 @@
+nav {
+  width: 100vw;
+  background-color: #222526;
+}
+
+.nav-box {
+  padding: 20px;
+  font-weight: bold;
+}
+
 .nav-box > a {
   text-decoration: none;
   color: whitesmoke;
@@ -5,5 +15,5 @@
 
 .nav-box > a:hover,
 .nav-box > a:active {
-  text-decoration: underline;
+  color: goldenrod;
 }

@@ -1,0 +1,14 @@
+.fa-minus-square {
+  border: 0;
+  background: none;
+  background-color: #696969;
+}
+
+.fa-minus-square:hover {
+  color: maroon;
+}
+
+.deck-li {
+  display: flex;
+  margin: auto;
+}

@@ -1,32 +1,7 @@
-/**************************************
-STATIC LAYOUT CSS
-**************************************/
-
 .wrapper {
   width: 90%;
-  margin: 0 auto;
+  margin: 0;
 }
-
-.top-bar,
-.options,
-.side-bar,
-.main-section {
-  width: 100%;
-}
-
-/* .side-bar,
-.main-section {
-  float: left;
-} */
-
-/* .side-bar {
-  width: 20.83%;
-  margin-right: 1%;
-} */
-
-/**************************************
-CSS TO MAKE THE EXAMPLE LOOK PRETTY
-**************************************/
 
 html,
 body,
@@ -40,9 +15,9 @@ img {
   vertical-align: baseline;
 }
 
-html,
-body {
-  height: 100%;
+html {
+  height: 100vh;
+  width: 100vw;
 }
 
 .wrap {
@@ -65,6 +40,7 @@ body {
   margin: 0;
   background-color: dimgrey;
   width: 100vw;
+  height: 100vh;
 }
 
 ul {
@@ -87,23 +63,16 @@ a {
   margin: auto 2%;
 }
 
-main {
-  width: 100%;
-}
-
 main,
-.top-bar,
-.side-bar,
 .main-section {
   border: 1px solid;
   margin-bottom: 1%;
   border-radius: 8px;
 }
 
-.top-bar,
-.side-bar,
 main {
   padding: 20px 0;
+  width: 100%;
 }
 
 .main-section {

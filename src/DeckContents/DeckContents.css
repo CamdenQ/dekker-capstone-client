@@ -4,13 +4,11 @@
   width: 30%;
   min-width: 20%;
   overflow-y: auto;
-  overflow-x: none;
 }
 
 .deck-list {
   list-style-type: none;
   padding: none;
-  overflow: scroll;
 }
 
 .deck-card {

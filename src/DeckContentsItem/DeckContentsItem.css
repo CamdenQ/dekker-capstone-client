@@ -1,0 +1,43 @@
+.li-border {
+  border: 1px solid;
+  border-radius: 6px;
+  background-color: black;
+  margin: 1%;
+}
+
+.deck-card {
+  padding: 2%;
+}
+
+.Red-card {
+  background-color: #cf2424;
+}
+
+.Green-card {
+  background-color: #048a45;
+}
+
+.Brown-card {
+  background-color: #75634d;
+}
+
+.Silver-card {
+  background-color: #a89fa1;
+}
+
+.Gold-card {
+  background-color: #d1bd82;
+}
+
+.White-card {
+  background-color: #f0ede0;
+}
+
+.Black-card {
+  background-color: #25221b;
+  color: white;
+}
+
+.Blue-card {
+  background-color: #53a6da;
+}

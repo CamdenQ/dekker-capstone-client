@@ -1,7 +1,6 @@
 import React from 'react';
-import { Route } from 'react-router-dom';
 
-import CardListItem from '../CardListItem/CardListItem';
+import CardsListItem from '../CardsListItem/CardsListItem';
 
 import './CardsList.css';
 
@@ -11,23 +10,9 @@ export default function CardsList(props) {
   return (
     <div className="database-list-wrapper">
       <section className="database-list">
-        <Route
-          exact
-          path="/cards"
-          render={() => {
-            return cards.map((card, i) => (
-              <CardListItem card={card} key={`card-${i}`} />
-            ));
-          }}
-        />
-        <Route
-          path="/cards/:id"
-          render={() => {
-            return cards.map((card, i) => (
-              <CardListItem card={card} key={`card-${i}`} />
-            ));
-          }}
-        />
+        {cards.map((card, i) => (
+          <CardsListItem card={card} key={`card-${i}`} cardID={i + 1} />
+        ))}
       </section>
     </div>
   );
