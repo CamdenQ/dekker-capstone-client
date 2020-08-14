@@ -272,6 +272,7 @@ class App extends Component {
                 <DeckEditorView
                   decks={decks}
                   deck={this.state.currentDeck}
+                  cards={this.state.cards}
                   selected={this.state.selected}
                   onFilterChange={this.handleFilterChange}
                   onCardListItemClick={this.handleCardListItemClick}
@@ -280,7 +281,7 @@ class App extends Component {
                   onClickSave={this.handleClickSaveDeck}
                   updateCurrentDeck={this.updateCurrentDeck}
                   onClickDelete={this.handleClickDelete}
-                  cards={this.state.filteredCards}
+                  filteredCards={this.state.filteredCards}
                   {...props}
                 />
               )}

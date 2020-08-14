@@ -14,6 +14,7 @@ export default function DeckEditorView(props) {
   }
   const deckID = props.match.params.deckID;
   const cards = props.cards;
+  const filteredCards = props.filteredCards;
   const selected = props.selected;
 
   console.log(`Deck passed as prop into DeckEditorView module`);
@@ -38,7 +39,7 @@ export default function DeckEditorView(props) {
         <div className="cards-sections flex row">
           <div className="database-list-wrapper">
             <section className="database-list">
-              {cards.map((card, i) => (
+              {filteredCards.map((card, i) => (
                 <CardsListItem
                   card={card}
                   key={`card-${i}`}

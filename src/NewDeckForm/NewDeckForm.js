@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
-import { withRouter } from 'react-router-dom';
-import './NewDeckForm.css';
 import ApiService from '../services/api-service';
+import history from '../../src/history';
+import './NewDeckForm.css';
 
 class NewDeckForm extends Component {
   constructor(props) {
     super(props);
+
+    this.state = { newDeck: {} };
 
     this.onSubmit = this.onSubmit.bind(this);
   }
@@ -14,12 +16,17 @@ class NewDeckForm extends Component {
     const deckTitle = document.getElementById('deck-title').value,
       deck = { title: deckTitle, contents: [] };
 
-    console.log(`New Deck Title: ${deckTitle}`);
-    console.log(deck);
-
-    let newID;
-
-    ApiService.postDeck(deck).then((res) => (newID = res.id));
+    ApiService.postDeck(deck)
+      .then((res) => {
+        console.log(`New Deck to be set in state:`);
+        console.log(res);
+        this.setState({ newDeck: res });
+      })
+      .then(() => {
+        console.log('New Deck in state:');
+        console.log(this.state.newDeck);
+      });
+    // history.push(`/decks/${this.state.newDeck.id}`);
   }
 
   render() {
@@ -54,4 +61,4 @@ class NewDeckForm extends Component {
   }
 }
 
-export default withRouter(NewDeckForm);
+export default NewDeckForm;

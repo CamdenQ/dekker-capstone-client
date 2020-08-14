@@ -10,9 +10,6 @@ export default function DecksListItem(props) {
           {props.deckName}
         </button>
       </Link>
-      <button
-        className="fa fa-minus-square"
-        onClick={props.onClickDelete}></button>
     </li>
   );
 }
