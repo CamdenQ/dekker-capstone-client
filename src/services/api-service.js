@@ -1,8 +1,8 @@
 import config from '../config';
 
 const ApiService = {
-  getCards() {
-    return fetch(`${config.API_ENDPOINT}/api/cards`, {}).then((res) =>
+  getCards(page) {
+    return fetch(`${config.API_ENDPOINT}/api/cards?page=${page}`).then((res) =>
       !res.ok ? res.json().then((e) => Promise.reject(e)) : res.json()
     );
   },

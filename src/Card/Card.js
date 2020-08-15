@@ -1,12 +1,12 @@
 import React from 'react';
-import './CardsListItem.css';
+import './Card.css';
 
-export default function CardListItem(props) {
+export default function Card(props) {
   return (
     <div
       className="card-img-container"
       card_id={props.card.id}
-      onClick={props.onCardListItemClick}>
+      onClick={props.onCardClick}>
       <img
         className="card-img"
         src={props.card.image_url}

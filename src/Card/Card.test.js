@@ -4,8 +4,8 @@ import React from 'react';
 // make the ReactDOM available, necessary for rendering the component
 import ReactDOM from 'react-dom';
 
-// make the CardListItem component available
-import CardListItem from './CardListItem';
+// make the Card component available
+import Card from './Card';
 import { BrowserRouter as Router } from 'react-router-dom';
 import { CARDS_STORE } from '../STORE/cards';
 
@@ -17,7 +17,7 @@ it('renders without crashing', () => {
   // render the component, this is the actual test, if something is wrong it will fail here
   ReactDOM.render(
     <Router>
-      <CardListItem card={CARDS_STORE[1]} />
+      <Card card={CARDS_STORE[1]} />
     </Router>,
     div
   );

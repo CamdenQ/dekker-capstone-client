@@ -1,13 +1,15 @@
 import React, { Component } from 'react';
 import { withRouter, Route, Switch } from 'react-router-dom';
+
 import Nav from './Nav/Nav';
 import CardsDBView from './CardsDBView/CardsDBView';
 import Landing from './Landing/Landing';
 import DecksList from './DecksList/DecksList';
 import ApiService from './services/api-service';
 import DeckEditorView from './DeckEditorView/DeckEditorView';
-import './App.css';
 import NotFound from './NotFound/NotFound';
+
+import './App.css';
 
 class App extends Component {
   constructor(props) {
@@ -16,6 +18,7 @@ class App extends Component {
     this.state = {
       decks: [],
       cards: [],
+      page: 1,
       selected: [],
       currentDeckID: 0,
       currentDeck: { contents: [] },
@@ -43,7 +46,7 @@ class App extends Component {
 
     this.handleFilterChange = this.handleFilterChange.bind(this);
     this.setDeckToSelected = this.setDeckToSelected.bind(this);
-    this.handleCardListItemClick = this.handleCardListItemClick.bind(this);
+    this.handleCardClick = this.handleCardClick.bind(this);
     this.handleClickNewDeck = this.handleClickNewDeck.bind(this);
     this.handleCancelNewDeck = this.handleCancelNewDeck.bind(this);
     this.handleDeckContentsItemClick = this.handleDeckContentsItemClick.bind(
@@ -53,6 +56,7 @@ class App extends Component {
     this.updateCurrentDeck = this.updateCurrentDeck.bind(this);
     this.handleSubmitNewDeck = this.handleSubmitNewDeck.bind(this);
     this.handleClickDelete = this.handleClickDelete.bind(this);
+    this.fetchMoreCards = this.fetchMoreCards.bind(this);
   }
 
   filterCards() {
@@ -157,7 +161,7 @@ class App extends Component {
     this.setState({ selected: [...selected] });
   }
 
-  handleCardListItemClick(e) {
+  handleCardClick(e) {
     const newCardID = e.target.getAttribute('card_id');
     let selected = this.state.selected;
     selected.push(newCardID);
@@ -212,9 +216,23 @@ class App extends Component {
     ApiService.deleteDeck(id);
   }
 
+  fetchMoreCards = () => {
+    this.setState({ page: this.state.page + 1 });
+    ApiService.getCards(this.state.page)
+      .then((cards) =>
+        this.setState({ cards: [...this.state.cards, ...cards] })
+      )
+      .catch((err) => console.log(err));
+  };
+
   componentDidMount() {
-    ApiService.getDecks().then((res) => this.setState({ decks: res }));
-    ApiService.getCards().then((res) => this.setState({ cards: res }));
+    const { page } = this.state;
+    ApiService.getDecks()
+      .then((res) => this.setState({ decks: res }))
+      .catch((err) => console.log(err));
+    ApiService.getCards(page)
+      .then((cards) => this.setState({ cards }))
+      .catch((err) => console.log(err));
 
     this.filterCards();
   }
@@ -241,9 +259,11 @@ class App extends Component {
               render={() => (
                 <CardsDBView
                   decks={this.state.decks}
-                  onFilterChange={this.handleFilterChange}
-                  cards={this.state.filteredCards}
+                  cards={this.state.cards}
+                  filteredCards={this.state.filteredCards}
                   namingDeck={this.state.namingDeck}
+                  fetchMoreCards={this.fetchMoreCards}
+                  onFilterChange={this.handleFilterChange}
                   onClickNewDeck={this.handleClickNewDeck}
                   onSubmitNewDeck={this.handleSubmitNewDeck}
                   onCancelNewDeck={this.handleCancelNewDeck}
@@ -273,15 +293,16 @@ class App extends Component {
                   decks={decks}
                   deck={this.state.currentDeck}
                   cards={this.state.cards}
+                  filteredCards={this.state.filteredCards}
                   selected={this.state.selected}
+                  fetchMoreCards={this.fetchMoreCards}
                   onFilterChange={this.handleFilterChange}
-                  onCardListItemClick={this.handleCardListItemClick}
+                  onCardClick={this.handleCardClick}
                   onDeckContentsItemClick={this.handleDeckContentsItemClick}
                   setDeckToSelected={this.setDeckToSelected}
                   onClickSave={this.handleClickSaveDeck}
                   updateCurrentDeck={this.updateCurrentDeck}
                   onClickDelete={this.handleClickDelete}
-                  filteredCards={this.state.filteredCards}
                   {...props}
                 />
               )}

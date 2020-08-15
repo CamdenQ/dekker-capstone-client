@@ -1,35 +1,36 @@
-import React from 'react';
+import React, { Component } from 'react';
+import InfiniteScroll from 'react-infinite-scroll-component';
+
 import FilterOptions from '../FilterOptions/FilterOptions';
-import CardsListItem from '../CardsListItem/CardsListItem';
 import NewDeckForm from '../NewDeckForm/NewDeckForm';
+import Card from '../Card/Card';
+
 import './CardsDBView.css';
 
-export default function CardsDBView(props) {
-  const cards = props.cards;
-  return (
-    <>
-      <FilterOptions onChange={props.onFilterChange} />
-      <NewDeckForm
-        onClick={props.onClickNewDeck}
-        onSubmit={props.onSubmitNewDeck}
-        namingDeck={props.namingDeck}
-        onCancel={props.onCancelNewDeck}
-      />
-      {/* <div className="cards-sections flex row">
-        <CardsList cards={props.cards} />
-      </div> */}
-      <div className="overflow">
-        <div className="Cards">
-          {cards.map((card, i) => (
-            <CardsListItem
-              card={card}
-              key={`card-${i}`}
-              cardID={i + 1}
-              onCardListItemClick={props.onCardListItemClick}
-            />
-          ))}
-        </div>
-      </div>
-    </>
-  );
+export default class CardsDBView extends Component {
+  render() {
+    const { cards, filteredCards } = this.props;
+    return (
+      <>
+        <FilterOptions onChange={this.props.onFilterChange} />
+        <NewDeckForm
+          onClick={this.props.onClickNewDeck}
+          onSubmit={this.props.onSubmitNewDeck}
+          namingDeck={this.props.namingDeck}
+          onCancel={this.props.onCancelNewDeck}
+        />
+        <InfiniteScroll
+          dataLength={cards.length}
+          next={this.props.fetchMoreCards}
+          hasMore={cards.length > 100 ? false : true}
+          loader={<h4>Loading...</h4>}>
+          <div className="Cards">
+            {filteredCards.map((card) => (
+              <Card key={card.id} card={card} />
+            ))}
+          </div>
+        </InfiniteScroll>
+      </>
+    );
+  }
 }

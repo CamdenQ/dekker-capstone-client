@@ -7,26 +7,25 @@ class NewDeckForm extends Component {
   constructor(props) {
     super(props);
 
-    this.state = { newDeck: {} };
+    this.state = { title: '' };
 
     this.onSubmit = this.onSubmit.bind(this);
+    this.handleChange = this.handleChange.bind(this);
   }
   onSubmit(e) {
     e.preventDefault();
-    const deckTitle = document.getElementById('deck-title').value,
-      deck = { title: deckTitle, contents: [] };
 
-    ApiService.postDeck(deck)
-      .then((res) => {
-        console.log(`New Deck to be set in state:`);
-        console.log(res);
-        this.setState({ newDeck: res });
-      })
-      .then(() => {
-        console.log('New Deck in state:');
-        console.log(this.state.newDeck);
-      });
-    // history.push(`/decks/${this.state.newDeck.id}`);
+    const deck = { title: this.state.title, contents: [] };
+
+    ApiService.postDeck(deck).then((res) => {
+      console.log(`New Deck to be set in state:`);
+      console.log(res);
+      history.push(`/decks/${res.id}`);
+    });
+  }
+
+  handleChange(e) {
+    this.setState({ title: e.target.value });
   }
 
   render() {
@@ -35,10 +34,11 @@ class NewDeckForm extends Component {
         <form className="new-deck-form" onSubmit={this.onSubmit}>
           <input
             aria-label="name"
+            value={this.state.title}
+            onChange={this.handleChange}
             type="text"
             placeholder="Deck Name"
             name="deck-title"
-            id="deck-title"
             required
           />
           <div className="new-deck-buttons">

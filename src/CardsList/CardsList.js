@@ -1,6 +1,6 @@
 import React from 'react';
 
-import CardsListItem from '../CardsListItem/CardsListItem';
+import Card from '../Card/Card';
 
 import './CardsList.css';
 
@@ -11,7 +11,7 @@ export default function CardsList(props) {
     <div className="database-list-wrapper">
       <section className="database-list">
         {cards.map((card, i) => (
-          <CardsListItem card={card} key={`card-${i}`} cardID={i + 1} />
+          <Card card={card} key={`card-${i}`} cardID={i + 1} />
         ))}
       </section>
     </div>
