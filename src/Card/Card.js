@@ -6,7 +6,7 @@ export default function Card(props) {
     <div
       className="card-img-container"
       card_id={props.card.id}
-      onClick={props.onCardClick}>
+      onClick={props.onClick}>
       <img
         className="card-img"
         src={props.card.image_url}

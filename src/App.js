@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { withRouter, Route, Switch } from 'react-router-dom';
 
-import Nav from './Nav/Nav';
 import CardsDBView from './CardsDBView/CardsDBView';
 import Landing from './Landing/Landing';
 import DecksList from './DecksList/DecksList';
@@ -245,71 +244,64 @@ class App extends Component {
     const decks = this.state.decks;
     return (
       <>
-        <Nav />
-        <header>
-          <h1>DEKKER</h1>
-          <p>An MTG Deck Builder</p>
-        </header>
-        <main>
-          <Switch>
-            <Route exact path="/" component={Landing} />
-            <Route
-              exact
-              path="/cards"
-              render={() => (
-                <CardsDBView
+        <Switch>
+          <Route exact path="/" component={Landing} />
+          <Route
+            exact
+            path="/cards"
+            render={() => (
+              <CardsDBView
+                decks={this.state.decks}
+                cards={this.state.cards}
+                filteredCards={this.state.filteredCards}
+                namingDeck={this.state.namingDeck}
+                fetchMoreCards={this.fetchMoreCards}
+                onFilterChange={this.handleFilterChange}
+                onClickNewDeck={this.handleClickNewDeck}
+                onSubmitNewDeck={this.handleSubmitNewDeck}
+                onCancelNewDeck={this.handleCancelNewDeck}
+              />
+            )}
+          />
+          <Route
+            exact
+            path="/decks"
+            render={(props) => {
+              return (
+                <DecksList
                   decks={this.state.decks}
-                  cards={this.state.cards}
-                  filteredCards={this.state.filteredCards}
                   namingDeck={this.state.namingDeck}
-                  fetchMoreCards={this.fetchMoreCards}
-                  onFilterChange={this.handleFilterChange}
                   onClickNewDeck={this.handleClickNewDeck}
                   onSubmitNewDeck={this.handleSubmitNewDeck}
                   onCancelNewDeck={this.handleCancelNewDeck}
-                />
-              )}
-            />
-            <Route
-              exact
-              path="/decks"
-              render={(props) => {
-                return (
-                  <DecksList
-                    decks={this.state.decks}
-                    namingDeck={this.state.namingDeck}
-                    onClickNewDeck={this.handleClickNewDeck}
-                    onSubmitNewDeck={this.handleSubmitNewDeck}
-                    onCancelNewDeck={this.handleCancelNewDeck}
-                    onClickDelete={this.handleClickDelete}
-                  />
-                );
-              }}
-            />
-            <Route
-              path="/decks/:deckID"
-              render={(props) => (
-                <DeckEditorView
-                  decks={decks}
-                  deck={this.state.currentDeck}
-                  cards={this.state.cards}
-                  filteredCards={this.state.filteredCards}
-                  selected={this.state.selected}
-                  fetchMoreCards={this.fetchMoreCards}
-                  onFilterChange={this.handleFilterChange}
-                  onCardClick={this.handleCardClick}
-                  onDeckContentsItemClick={this.handleDeckContentsItemClick}
-                  setDeckToSelected={this.setDeckToSelected}
-                  onClickSave={this.handleClickSaveDeck}
-                  updateCurrentDeck={this.updateCurrentDeck}
                   onClickDelete={this.handleClickDelete}
-                  {...props}
                 />
-              )}
-            />
-            <Route component={NotFound} />
-          </Switch>
-        </main>
+              );
+            }}
+          />
+          <Route
+            path="/decks/:deckID"
+            render={(props) => (
+              <DeckEditorView
+                decks={decks}
+                deck={this.state.currentDeck}
+                cards={this.state.cards}
+                filteredCards={this.state.filteredCards}
+                selected={this.state.selected}
+                fetchMoreCards={this.fetchMoreCards}
+                onFilterChange={this.handleFilterChange}
+                onCardClick={this.handleCardClick}
+                onDeckContentsItemClick={this.handleDeckContentsItemClick}
+                setDeckToSelected={this.setDeckToSelected}
+                onClickSave={this.handleClickSaveDeck}
+                updateCurrentDeck={this.updateCurrentDeck}
+                onClickDelete={this.handleClickDelete}
+                {...props}
+              />
+            )}
+          />
+          <Route component={NotFound} />
+        </Switch>
       </>
     );
   }

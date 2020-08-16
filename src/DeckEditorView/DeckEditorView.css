@@ -5,9 +5,12 @@
     minmax(min(calc(180px + 12vmin), 100%), 1fr)
   );
   text-align: center;
-  overflow-y: scroll;
 }
 
 .wrapper {
   margin: 0;
+}
+
+.infinite-scroll-component__outerdiv {
+  width: 100%;
 }

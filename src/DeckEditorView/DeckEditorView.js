@@ -6,6 +6,8 @@ import DeckContents from '../DeckContents/DeckContents';
 import Card from '../Card/Card';
 
 import './DeckEditorView.css';
+import Nav from '../Nav/Nav';
+import Header from '../Header/Header';
 
 export default class DeckEditorView extends Component {
   state = { cards: [], page: 1 };
@@ -45,32 +47,41 @@ export default class DeckEditorView extends Component {
 
     return (
       <>
-        <FilterOptions onChange={this.props.onFilterChange} />
-        <div className="cards-sections flex row">
-          <DeckContents
-            deckID={deckID}
-            deck={this.props.deck}
-            cards={cards}
-            selected={selected}
-            setDeckToSelected={this.props.setDeckToSelected}
-            onDeckContentsItemClick={this.props.onDeckContentsItemClick}
-            onClickSave={this.props.onClickSave}
-            onClickDelete={this.props.onClickDelete}
-            updateCurrentDeck={this.props.updateCurrentDeck}
-            history={this.props.history}
-          />
-          <InfiniteScroll
-            dataLength={cards.length}
-            next={this.props.fetchMoreCards}
-            hasMore={cards.length > 100 ? false : true}
-            loader={<h4>Loading...</h4>}>
-            <div className="Cards">
-              {filteredCards.map((card) => (
-                <Card key={card.id} card={card} />
-              ))}
-            </div>
-          </InfiniteScroll>
-        </div>
+        <Nav />
+        <Header />
+        <main>
+          <FilterOptions onChange={this.props.onFilterChange} />
+          <div className="cards-sections flex row">
+            <DeckContents
+              deckID={deckID}
+              deck={this.props.deck}
+              cards={cards}
+              selected={selected}
+              setDeckToSelected={this.props.setDeckToSelected}
+              onDeckContentsItemClick={this.props.onDeckContentsItemClick}
+              onClickSave={this.props.onClickSave}
+              onClickDelete={this.props.onClickDelete}
+              updateCurrentDeck={this.props.updateCurrentDeck}
+              history={this.props.history}
+            />
+            <InfiniteScroll
+              height="100%"
+              dataLength={cards.length}
+              next={this.props.fetchMoreCards}
+              hasMore={cards.length > 100 ? false : true}
+              loader={<h4>Loading...</h4>}>
+              <div className="Cards">
+                {filteredCards.map((card) => (
+                  <Card
+                    key={card.id}
+                    card={card}
+                    onClick={this.props.onCardClick}
+                  />
+                ))}
+              </div>
+            </InfiniteScroll>
+          </div>
+        </main>
       </>
     );
   }

@@ -16,6 +16,15 @@
   font-size: 18px;
 }
 
+.new-deck-form input {
+  border-radius: 50px;
+  box-shadow: 0 3px 20px 0 #0000003b;
+}
+
+.new-deck-button {
+  margin-bottom: 15px;
+}
+
 /* .new-deck-form input {
   padding-right: 100px;
 } */
@@ -32,6 +41,7 @@
   background: none;
   font-size: 35px;
   margin: auto;
+  box-shadow: none;
 }
 
 /* .new-deck-submit {
