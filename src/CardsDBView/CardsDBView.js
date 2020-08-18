@@ -16,7 +16,10 @@ export default function CardsDBView(props) {
       <Nav />
       <Header />
       <main style={{ height: '100vh' }}>
-        <FilterOptions onChange={props.onFilterChange} />
+        <FilterOptions
+          onChange={props.onFilterChange}
+          filters={props.filters}
+        />
         <div className="new-deck">
           <NewDeckForm
             onClick={props.onClickNewDeck}
@@ -31,7 +34,7 @@ export default function CardsDBView(props) {
             next={props.fetchMoreCards}
             scrollThreshold={0.1}
             hasMore={cards.length > 1130 ? false : true}
-            loader={<h4>Loading...</h4>}>
+            loader={<h4>Scroll down to load more...</h4>}>
             <div className="Cards">
               {filteredCards.map((card) => (
                 <Card key={card.id} card={card} />

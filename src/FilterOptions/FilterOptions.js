@@ -6,10 +6,6 @@ export default function FilterOptions(props) {
     <section className="options">
       <div className="container">
         <ul className="ks-cboxtags">
-          {/* <form>
-            <fieldset>
-              <legend>Color</legend> */}
-
           <li>
             <label>
               <input
@@ -18,6 +14,7 @@ export default function FilterOptions(props) {
                 id="isRed"
                 name="color"
                 value="Red"
+                checked={props.filters.colors.isRed}
               />
               Red
             </label>
@@ -30,6 +27,7 @@ export default function FilterOptions(props) {
                 id="isBlack"
                 name="color"
                 value="Black"
+                checked={props.filters.colors.isBlack}
               />
               Black
             </label>
@@ -42,6 +40,7 @@ export default function FilterOptions(props) {
                 id="isBlue"
                 name="color"
                 value="Blue"
+                checked={props.filters.colors.isBlue}
               />
               Blue
             </label>
@@ -54,6 +53,7 @@ export default function FilterOptions(props) {
                 id="isWhite"
                 name="color"
                 value="White"
+                checked={props.filters.colors.isWhite}
               />
               White
             </label>
@@ -66,6 +66,7 @@ export default function FilterOptions(props) {
                 id="isGreen"
                 name="color"
                 value="Green"
+                checked={props.filters.colors.isGreen}
               />
               Green
             </label>
@@ -80,6 +81,7 @@ export default function FilterOptions(props) {
                 id="isCreature"
                 name="type"
                 value="Creature"
+                checked={props.filters.types.isCreature}
               />
               Creatures
             </label>
@@ -92,6 +94,7 @@ export default function FilterOptions(props) {
                 id="isPlaneswalker"
                 name="type"
                 value="Planeswalker"
+                checked={props.filters.types.isPlaneswalker}
               />
               Planeswalkers
             </label>
@@ -104,6 +107,7 @@ export default function FilterOptions(props) {
                 id="isArtifact"
                 name="type"
                 value="Artifact"
+                checked={props.filters.types.isArtifact}
               />
               Artifacts
             </label>
@@ -116,6 +120,7 @@ export default function FilterOptions(props) {
                 id="isEnchantment"
                 name="type"
                 value="Enchantment"
+                checked={props.filters.types.isEnchantment}
               />
               Enchantments
             </label>
@@ -128,6 +133,7 @@ export default function FilterOptions(props) {
                 id="isSorcery"
                 name="type"
                 value="Sorcery"
+                checked={props.filters.types.isSorcery}
               />
               Sorcery
             </label>
@@ -140,6 +146,7 @@ export default function FilterOptions(props) {
                 id="isInstant"
                 name="type"
                 value="Instant"
+                checked={props.filters.types.isInstant}
               />
               Instants
             </label>
@@ -152,6 +159,7 @@ export default function FilterOptions(props) {
                 id="isLand"
                 name="type"
                 value="Land"
+                checked={props.filters.types.isLand}
               />
               Lands
             </label>

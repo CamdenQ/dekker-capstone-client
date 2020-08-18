@@ -2,3 +2,9 @@
   cursor: pointer;
   width: 223px;
 }
+
+@media only screen and (max-width: 350) {
+  .card-img {
+    width: 100%;
+  }
+}

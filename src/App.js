@@ -248,6 +248,39 @@ class App extends Component {
   }
 
   render() {
+    const {
+      isRed,
+      isBlack,
+      isBlue,
+      isWhite,
+      isGreen,
+      isCreature,
+      isPlaneswalker,
+      isArtifact,
+      isEnchantment,
+      isSorcery,
+      isInstant,
+      isLand,
+    } = this.state;
+
+    const filters = {
+      colors: {
+        isRed: isRed,
+        isBlack: isBlack,
+        isBlue: isBlue,
+        isWhite: isWhite,
+        isGreen: isGreen,
+      },
+      types: {
+        isCreature: isCreature,
+        isPlaneswalker: isPlaneswalker,
+        isArtifact: isArtifact,
+        isEnchantment: isEnchantment,
+        isSorcery: isSorcery,
+        isInstant: isInstant,
+        isLand: isLand,
+      },
+    };
     const decks = this.state.decks;
     return (
       <>
@@ -261,6 +294,7 @@ class App extends Component {
                 decks={this.state.decks}
                 cards={this.state.cards}
                 filteredCards={this.state.filteredCards}
+                filters={filters}
                 namingDeck={this.state.namingDeck}
                 fetchMoreCards={this.fetchMoreCards}
                 onFilterChange={this.handleFilterChange}
@@ -294,6 +328,7 @@ class App extends Component {
                 deck={this.state.currentDeck}
                 cards={this.state.cards}
                 filteredCards={this.state.filteredCards}
+                filters={filters}
                 selected={this.state.selected}
                 fetchMoreCards={this.fetchMoreCards}
                 onFilterChange={this.handleFilterChange}

@@ -50,15 +50,3 @@
   border: solid 1px;
   /* margin: 2.5%; */
 }
-
-/* .deck-contents-save {
-  border-right: none;
-} */
-
-.deck-contents-save:hover {
-  background-color: rgb(140, 255, 140);
-}
-
-.deck-contents-delete:hover {
-  background-color: rgb(255, 112, 112);
-}

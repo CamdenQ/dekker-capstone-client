@@ -35,7 +35,10 @@ export default class DeckEditorView extends Component {
         <Nav />
         <Header />
         <main style={{ height: '100vh' }}>
-          <FilterOptions onChange={this.props.onFilterChange} />
+          <FilterOptions
+            onChange={this.props.onFilterChange}
+            filters={this.props.filters}
+          />
           <div className="cards-sections flex row">
             <DeckContents
               deckID={deckID}

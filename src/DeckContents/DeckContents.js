@@ -34,12 +34,12 @@ export default function DeckContents(props) {
   return (
     <section className="deck-contents">
       <h2 className="deck-list-title">{props.deckName}</h2>
-      <button className="deck-contents-save" onClick={props.onClickSave}>
-        Save Deck
-      </button>
-      <button className="deck-contents-delete" onClick={props.onClickDelete}>
-        Delete Deck
-      </button>
+      <button
+        className="deck-contents-save fa fa-floppy-o"
+        onClick={props.onClickSave}></button>
+      <button
+        className="deck-contents-delete fa fa-trash-o"
+        onClick={props.onClickDelete}></button>
       <ul className="deck-list">
         {props.selected.map((cardID, i) => {
           const card = props.cards[cardID - 1];
