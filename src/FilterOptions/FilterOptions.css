@@ -1,20 +1,11 @@
+.options {
+  border-bottom: solid 2px;
+  border-color: #222526;
+}
+
 .options input {
   cursor: pointer;
 }
-/* 
-body,
-html {
-  margin: 0;
-  padding: 0;
-}
-
-body {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 100vh;
-  background: #fff;
-} */
 
 .container {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -23,11 +14,13 @@ body {
 
 ul.ks-cboxtags {
   list-style: none;
-  padding: 20px;
+  padding: 5px;
 }
+
 ul.ks-cboxtags li {
   display: inline;
 }
+
 ul.ks-cboxtags li label {
   display: inline-block;
   background-color: rgba(255, 255, 255, 0.9);
@@ -35,12 +28,12 @@ ul.ks-cboxtags li label {
   color: #adadad;
   border-radius: 25px;
   white-space: nowrap;
-  margin: 3px 0px;
+  /* margin: 3px 0px; */
   -webkit-touch-callout: none;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
-  user-select: none;
+  /* user-select: none; */
   -webkit-tap-highlight-color: transparent;
   transition: all 0.2s;
 }
@@ -49,30 +42,30 @@ ul.ks-cboxtags li label {
   padding: 8px 12px;
   cursor: pointer;
 }
-
+/* 
 ul.ks-cboxtags li label::before {
   display: inline-block;
   font-style: normal;
   font-variant: normal;
   text-rendering: auto;
   -webkit-font-smoothing: antialiased;
-  font-family: 'Font Awesome 5 Free';
+  font-family: 'Open Sans', sans-serif;
   font-weight: 900;
   font-size: 12px;
   padding: 2px 6px 2px 2px;
   content: '\f067';
   transition: transform 0.3s ease-in-out;
-}
+} */
 
-ul.ks-cboxtags li input[type='checkbox']:checked + label::before {
+/* ul.ks-cboxtags li input[type='checkbox']:checked + label::before {
   content: '\f00c';
   transform: rotate(-360deg);
   transition: transform 0.3s ease-in-out;
-}
+} */
 
 ul.ks-cboxtags li input[type='checkbox']:checked + label {
-  border: 2px solid #1bdbf8;
-  background-color: #12bbd4;
+  border: 2px solid #2df81b;
+  background-color: #29d412;
   color: #fff;
   transition: all 0.2s;
 }
@@ -87,5 +80,5 @@ ul.ks-cboxtags li input[type='checkbox'] {
 }
 
 ul.ks-cboxtags li input[type='checkbox']:focus + label {
-  border: 2px solid #e9a1ff;
+  border: 2px solid #9800c7;
 }

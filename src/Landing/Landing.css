@@ -16,6 +16,7 @@ main.landing-main {
   background-attachment: fixed;
   position: relative;
   overflow: hidden;
+  margin: 0;
 }
 
 main.landing-main .overlay {
@@ -31,15 +32,27 @@ main.landing-main .overlay {
 h1 {
   font-family: 'Righteous', cursive;
   font-size: 80px;
-  margin-bottom: 30px;
+  margin-bottom: -15px;
 }
 
 h3,
 p {
   font-family: 'Open Sans', sans-serif;
+  font-weight: bold;
   margin-bottom: 30px;
 }
 
 p.fineprint {
   font-size: 10px;
+}
+
+.landing-button {
+  font-family: 'Open Sans', sans-serif;
+  font-weight: bold;
+  color: #222526;
+}
+
+.landing-button:hover {
+  background-color: #222526;
+  color: white;
 }

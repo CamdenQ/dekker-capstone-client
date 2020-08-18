@@ -7,6 +7,7 @@ import { BrowserRouter as Router } from 'react-router-dom';
 
 // make the CardsDBView component available
 import CardsDBView from './CardsDBView';
+import { CARDS_STORE } from '../STORE/cards';
 
 // this is the test case
 it('renders without crashing', () => {
@@ -16,7 +17,7 @@ it('renders without crashing', () => {
   // render the component, this is the actual test, if something is wrong it will fail here
   ReactDOM.render(
     <Router>
-      <CardsDBView />
+      <CardsDBView cards={CARDS_STORE} filteredCards={CARDS_STORE} />
     </Router>,
     div
   );

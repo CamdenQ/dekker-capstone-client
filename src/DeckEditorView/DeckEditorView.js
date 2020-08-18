@@ -10,24 +10,11 @@ import Nav from '../Nav/Nav';
 import Header from '../Header/Header';
 
 export default class DeckEditorView extends Component {
-  state = { cards: [], page: 1 };
-
+  state = { deckID: this.props.match.params.deckID, deck: this.props.deck };
   componentDidMount() {
-    fetch(`http://localhost:8000/api/cards?page=${this.state.page}`)
-      .then((res) => res.json())
-      .then((cards) => this.setState({ cards }))
-      .catch((err) => console.log(err));
+    this.props.updateCurrentDeck(this.state.deckID);
+    this.props.setDeckToSelected(this.state.deck);
   }
-
-  fetchMoreCards = () => {
-    this.setState({ page: this.state.page + 1 });
-    fetch(`http://localhost:8000/api/cards?page=${this.state.page}`)
-      .then((res) => res.json())
-      .then((cards) =>
-        this.setState({ cards: [...this.state.cards, ...cards] })
-      )
-      .catch((err) => console.log(err));
-  };
 
   render() {
     if (!this.props.decks || this.props.decks.length === 0) {
@@ -37,10 +24,8 @@ export default class DeckEditorView extends Component {
         </div>
       );
     }
-    const deckID = this.props.match.params.deckID;
-    const cards = this.props.cards;
-    const filteredCards = this.props.filteredCards;
-    const selected = this.props.selected;
+    const { deckID } = this.props.match.params;
+    const { cards, filteredCards, selected } = this.props;
 
     console.log(`Deck passed as prop into DeckEditorView module`);
     console.table(this.props.deck);
@@ -68,14 +53,14 @@ export default class DeckEditorView extends Component {
               height="100%"
               dataLength={cards.length}
               next={this.props.fetchMoreCards}
-              hasMore={cards.length > 100 ? false : true}
+              hasMore={cards.length > 1130 ? false : true}
               loader={<h4>Loading...</h4>}>
               <div className="Cards">
                 {filteredCards.map((card) => (
                   <Card
                     key={card.id}
                     card={card}
-                    onClick={this.props.onCardClick}
+                    onClick={this.props.onClickCard}
                   />
                 ))}
               </div>

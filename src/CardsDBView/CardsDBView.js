@@ -28,7 +28,7 @@ export default function CardsDBView(props) {
           <InfiniteScroll
             dataLength={cards.length}
             next={props.fetchMoreCards}
-            hasMore={cards.length > 100 ? false : true}
+            hasMore={cards.length > 1130 ? false : true}
             loader={<h4>Loading...</h4>}>
             <div className="Cards">
               {filteredCards.map((card) => (

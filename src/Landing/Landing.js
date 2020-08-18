@@ -8,23 +8,25 @@ export default function Landing() {
       <main className="landing-main">
         <div className="overlay">
           <h1>DEKKER</h1>
-          <h3>A Magic: The Gathering Deck Builder</h3>
+          <h3>
+            A <i>Magic: the Gathering</i> Deck Builder
+          </h3>
           <p>
-            Dekker allows you to browse the full catalog* of Magic: the
-            Gathering playing cards and add them to decks of your own creation.
+            Dekker allows you to browse the full catalog* of{' '}
+            <i>Magic: the Gathering</i> playing cards and add them to decks of
+            your own creation.
           </p>
           <p>Click the button below to get started!</p>
           <br />
           <Link to="/cards">
-            <button>LET'S GO!</button>
+            <button className="landing-button">LET'S GO!</button>
           </Link>
           <p className="fineprint">
-            *NYI - catalog currently limited to Guilds of Ravnica block and Core
-            Set 2019
+            *NYI - catalog currently limited to Guilds of Ravnica pseudo-block
+            and Core Set 2020
           </p>
         </div>
       </main>
-      {/* <main className="landing-main"></main> */}
     </>
   );
 }

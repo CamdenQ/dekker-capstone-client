@@ -45,7 +45,7 @@ class App extends Component {
 
     this.handleFilterChange = this.handleFilterChange.bind(this);
     this.setDeckToSelected = this.setDeckToSelected.bind(this);
-    this.handleCardClick = this.handleCardClick.bind(this);
+    this.handleClickCard = this.handleClickCard.bind(this);
     this.handleClickNewDeck = this.handleClickNewDeck.bind(this);
     this.handleCancelNewDeck = this.handleCancelNewDeck.bind(this);
     this.handleDeckContentsItemClick = this.handleDeckContentsItemClick.bind(
@@ -112,6 +112,9 @@ class App extends Component {
     }
 
     if (cardColors.length > 0) {
+      console.log('Colors to filter by:');
+      console.log(cardColors);
+
       filteredCards = filteredCards.filter((card) => {
         for (let i = 0; i < cardColors.length; i++) {
           if (card.colors.includes(cardColors[i])) {
@@ -123,6 +126,9 @@ class App extends Component {
     }
 
     if (cardTypes.length > 0) {
+      console.log('Types to filter by:');
+      console.log(cardTypes);
+
       filteredCards = filteredCards.filter((card) => {
         for (let i = 0; i < cardTypes.length; i++) {
           if (card.types.includes(cardTypes[i])) {
@@ -160,8 +166,9 @@ class App extends Component {
     this.setState({ selected: [...selected] });
   }
 
-  handleCardClick(e) {
+  handleClickCard(e) {
     const newCardID = e.target.getAttribute('card_id');
+    console.log(`Card with ID ${newCardID} clicked!`);
     let selected = this.state.selected;
     selected.push(newCardID);
     selected = selected.sort();
@@ -290,12 +297,12 @@ class App extends Component {
                 selected={this.state.selected}
                 fetchMoreCards={this.fetchMoreCards}
                 onFilterChange={this.handleFilterChange}
-                onCardClick={this.handleCardClick}
+                onClickCard={this.handleClickCard}
                 onDeckContentsItemClick={this.handleDeckContentsItemClick}
-                setDeckToSelected={this.setDeckToSelected}
                 onClickSave={this.handleClickSaveDeck}
-                updateCurrentDeck={this.updateCurrentDeck}
                 onClickDelete={this.handleClickDelete}
+                updateCurrentDeck={this.updateCurrentDeck}
+                setDeckToSelected={this.setDeckToSelected}
                 {...props}
               />
             )}

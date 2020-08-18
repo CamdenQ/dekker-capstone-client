@@ -7,16 +7,28 @@ import { BrowserRouter as Router } from 'react-router-dom';
 
 // make the DeckEditorView component available
 import DeckEditorView from './DeckEditorView';
+import { CARDS_STORE } from '../STORE/cards';
 
 // this is the test case
 it('renders without crashing', () => {
   // first create a DOM element to render the component into
   const div = document.createElement('div');
-
+  const match = {
+    path: '/decks/:deckID',
+    url: '/decks/1',
+    isExact: true,
+    params: { deckID: '1' },
+  };
   // render the component, this is the actual test, if something is wrong it will fail here
   ReactDOM.render(
     <Router>
-      <DeckEditorView />
+      <DeckEditorView
+        cards={CARDS_STORE}
+        filteredCards={CARDS_STORE}
+        match={match}
+        updateCurrentDeck={() => {}}
+        setDeckToSelected={() => {}}
+      />
     </Router>,
     div
   );

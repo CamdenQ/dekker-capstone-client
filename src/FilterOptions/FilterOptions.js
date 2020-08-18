@@ -11,126 +11,150 @@ export default function FilterOptions(props) {
               <legend>Color</legend> */}
 
           <li>
-            <input
-              onChange={props.onChange}
-              type="checkbox"
-              id="isRed"
-              name="color"
-              value="Red"
-            />
-            <label htmlFor="red">Red</label>
+            <label>
+              <input
+                onChange={props.onChange}
+                type="checkbox"
+                id="isRed"
+                name="color"
+                value="Red"
+              />
+              Red
+            </label>
           </li>
           <li>
-            <input
-              onChange={props.onChange}
-              type="checkbox"
-              id="isBlack"
-              name="color"
-              value="Black"
-            />
-            <label htmlFor="Black">Black</label>
+            <label>
+              <input
+                onChange={props.onChange}
+                type="checkbox"
+                id="isBlack"
+                name="color"
+                value="Black"
+              />
+              Black
+            </label>
           </li>
           <li>
-            <input
-              onChange={props.onChange}
-              type="checkbox"
-              id="isBlue"
-              name="color"
-              value="Blue"
-            />
-            <label htmlFor="blue">Blue</label>
+            <label>
+              <input
+                onChange={props.onChange}
+                type="checkbox"
+                id="isBlue"
+                name="color"
+                value="Blue"
+              />
+              Blue
+            </label>
           </li>
           <li>
-            <input
-              onChange={props.onChange}
-              type="checkbox"
-              id="isWhite"
-              name="color"
-              value="White"
-            />
-            <label htmlFor="white">White</label>
+            <label>
+              <input
+                onChange={props.onChange}
+                type="checkbox"
+                id="isWhite"
+                name="color"
+                value="White"
+              />
+              White
+            </label>
           </li>
           <li>
-            <input
-              onChange={props.onChange}
-              type="checkbox"
-              id="isGreen"
-              name="color"
-              value="Green"
-            />
-            <label htmlFor="green">Green</label>
+            <label>
+              <input
+                onChange={props.onChange}
+                type="checkbox"
+                id="isGreen"
+                name="color"
+                value="Green"
+              />
+              Green
+            </label>
           </li>
         </ul>
         <ul className="ks-cboxtags">
           <li>
-            <input
-              onChange={props.onChange}
-              type="checkbox"
-              id="isCreature"
-              name="type"
-              value="Creature"
-            />
-            <label htmlFor="creature">Creatures</label>
+            <label>
+              <input
+                onChange={props.onChange}
+                type="checkbox"
+                id="isCreature"
+                name="type"
+                value="Creature"
+              />
+              Creatures
+            </label>
           </li>
           <li>
-            <input
-              onChange={props.onChange}
-              type="checkbox"
-              id="isPlaneswalker"
-              name="type"
-              value="Planeswalker"
-            />
-            <label htmlFor="planeswalker">Planeswalkers</label>
+            <label>
+              <input
+                onChange={props.onChange}
+                type="checkbox"
+                id="isPlaneswalker"
+                name="type"
+                value="Planeswalker"
+              />
+              Planeswalkers
+            </label>
           </li>
           <li>
-            <input
-              onChange={props.onChange}
-              type="checkbox"
-              id="isArtifact"
-              name="type"
-              value="Artifact"
-            />
-            <label htmlFor="Artifact">Artifacts</label>
+            <label>
+              <input
+                onChange={props.onChange}
+                type="checkbox"
+                id="isArtifact"
+                name="type"
+                value="Artifact"
+              />
+              Artifacts
+            </label>
           </li>
           <li>
-            <input
-              onChange={props.onChange}
-              type="checkbox"
-              id="isEnchantment"
-              name="type"
-              value="Enchantment"
-            />
-            <label htmlFor="enchantment">Enchantments</label>
+            <label>
+              <input
+                onChange={props.onChange}
+                type="checkbox"
+                id="isEnchantment"
+                name="type"
+                value="Enchantment"
+              />
+              Enchantments
+            </label>
           </li>
           <li>
-            <input
-              onChange={props.onChange}
-              type="checkbox"
-              id="isSorcery"
-              name="type"
-              value="Sorcery"
-            />
-            <label htmlFor="sorcery">Sorcery</label>
+            <label>
+              <input
+                onChange={props.onChange}
+                type="checkbox"
+                id="isSorcery"
+                name="type"
+                value="Sorcery"
+              />
+              Sorcery
+            </label>
           </li>
           <li>
-            <input
-              onChange={props.onChange}
-              type="checkbox"
-              id="isInstant"
-              name="type"
-              value="Instant"
-            />
-            <label htmlFor="instant">Instants</label>
+            <label>
+              <input
+                onChange={props.onChange}
+                type="checkbox"
+                id="isInstant"
+                name="type"
+                value="Instant"
+              />
+              Instants
+            </label>
           </li>
           <li>
-            <input
-              onChange={props.onChange}
-              type="checkbox"
-              id="isLand"
-              name="type"
-              value="Land"
-            />
-            <label htmlFor="land">Lands</label>
+            <label>
+              <input
+                onChange={props.onChange}
+                type="checkbox"
+                id="isLand"
+                name="type"
+                value="Land"
+              />
+              Lands
+            </label>
           </li>
           {/* </fieldset>
           </form> */}

@@ -3,16 +3,14 @@ import DecksListItem from '../DecksListItem/DecksListItem';
 import NewDeckForm from '../NewDeckForm/NewDeckForm';
 import './DecksList.css';
 import Nav from '../Nav/Nav';
+import Header from '../Header/Header';
 
 export default function DecksList(props) {
   const decks = props.decks;
   return (
     <>
       <Nav />
-      <header>
-        <h1>DEKKER</h1>
-        <p>An MTG Deck Builder</p>
-      </header>
+      <Header />
       <main>
         <section className="decks-list">
           <h2>Decks</h2>

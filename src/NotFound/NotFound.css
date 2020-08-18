@@ -57,7 +57,7 @@ body {
   font-weight: 400;
   text-transform: uppercase;
   color: #211b19;
-  background: #696969;
+  background: #dfdfdf;
   padding: 10px 5px;
   margin: auto;
   display: inline-block;
@@ -68,6 +68,7 @@ body {
 }
 
 .notfound a {
+  border-radius: 50px;
   font-family: 'Montserrat', sans-serif;
   display: inline-block;
   font-weight: 700;
@@ -75,14 +76,14 @@ body {
   color: #fff;
   text-transform: uppercase;
   padding: 13px 23px;
-  background: #ff6300;
+  background: goldenrod;
   font-size: 18px;
   -webkit-transition: 0.2s all;
   transition: 0.2s all;
 }
 
 .notfound a:hover {
-  color: #ff6300;
+  color: goldenrod;
   background: #211b19;
 }
 

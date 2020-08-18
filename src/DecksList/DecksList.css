@@ -69,6 +69,10 @@
   justify-content: center;
 }
 
+.decks-list {
+  text-align: center;
+}
+
 .decks-list li a {
   text-decoration: none;
   color: inherit;
