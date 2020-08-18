@@ -13,11 +13,33 @@ import { CARDS_STORE } from '../STORE/cards';
 it('renders without crashing', () => {
   // first create a DOM element to render the component into
   const div = document.createElement('div');
+  const filters = {
+    colors: {
+      isRed: true,
+      isBlack: false,
+      isBlue: false,
+      isWhite: false,
+      isGreen: false,
+    },
+    types: {
+      isCreature: true,
+      isPlaneswalker: true,
+      isArtifact: true,
+      isEnchantment: true,
+      isSorcery: true,
+      isInstant: true,
+      isLand: true,
+    },
+  };
 
   // render the component, this is the actual test, if something is wrong it will fail here
   ReactDOM.render(
     <Router>
-      <CardsDBView cards={CARDS_STORE} filteredCards={CARDS_STORE} />
+      <CardsDBView
+        cards={CARDS_STORE}
+        filteredCards={CARDS_STORE}
+        filters={filters}
+      />
     </Router>,
     div
   );

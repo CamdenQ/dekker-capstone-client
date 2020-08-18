@@ -112,9 +112,6 @@ class App extends Component {
     }
 
     if (cardColors.length > 0) {
-      console.log('Colors to filter by:');
-      console.log(cardColors);
-
       filteredCards = filteredCards.filter((card) => {
         for (let i = 0; i < cardColors.length; i++) {
           if (card.colors.includes(cardColors[i])) {
@@ -126,9 +123,6 @@ class App extends Component {
     }
 
     if (cardTypes.length > 0) {
-      console.log('Types to filter by:');
-      console.log(cardTypes);
-
       filteredCards = filteredCards.filter((card) => {
         for (let i = 0; i < cardTypes.length; i++) {
           if (card.types.includes(cardTypes[i])) {
@@ -168,7 +162,6 @@ class App extends Component {
 
   handleClickCard(e) {
     const newCardID = e.target.getAttribute('card_id');
-    console.log(`Card with ID ${newCardID} clicked!`);
     let selected = this.state.selected;
     selected.push(newCardID);
     selected = selected.sort();
@@ -214,10 +207,7 @@ class App extends Component {
   }
 
   handleClickDelete() {
-    console.log('Delete clicked!');
     const id = Number(this.state.currentDeck.id);
-
-    console.log(`ID of deck to be deleted: ${id}`);
 
     ApiService.deleteDeck(id);
   }
