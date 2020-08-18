@@ -147,7 +147,7 @@ class App extends Component {
     }
   }
 
-  updateCurrentDeck(deckID) {
+  updateCurrentDeck = (deckID) => {
     console.log(`Deck ID Passed into updateCurrentDeck: ${deckID}`);
     console.log(
       `Type of value passed as deckID into updateCurrentDeck: ${typeof deckID}`
@@ -155,16 +155,16 @@ class App extends Component {
     ApiService.getDeck(deckID).then((res) =>
       this.setState({ currentDeck: res })
     );
-  }
+  };
 
-  setDeckToSelected(deck) {
+  setDeckToSelected = (deck) => {
     console.log(`Deck passed into setDeckToSelected:`);
     console.table(deck);
     let selected = deck.contents.sort();
     console.log(`Selected array set to state:`);
     console.log(selected);
     this.setState({ selected: [...selected] });
-  }
+  };
 
   handleClickCard(e) {
     const newCardID = e.target.getAttribute('card_id');

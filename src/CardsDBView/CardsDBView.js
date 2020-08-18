@@ -15,19 +15,21 @@ export default function CardsDBView(props) {
     <>
       <Nav />
       <Header />
-      <main>
+      <main style={{ height: '100vh' }}>
         <FilterOptions onChange={props.onFilterChange} />
-        <NewDeckForm
-          onClick={props.onClickNewDeck}
-          onSubmit={props.onSubmitNewDeck}
-          namingDeck={props.namingDeck}
-          onCancel={props.onCancelNewDeck}
-        />
-
+        <div className="new-deck">
+          <NewDeckForm
+            onClick={props.onClickNewDeck}
+            onSubmit={props.onSubmitNewDeck}
+            namingDeck={props.namingDeck}
+            onCancel={props.onCancelNewDeck}
+          />
+        </div>
         <div className="cards-sections flex row">
           <InfiniteScroll
             dataLength={cards.length}
             next={props.fetchMoreCards}
+            scrollThreshold={0.1}
             hasMore={cards.length > 1130 ? false : true}
             loader={<h4>Loading...</h4>}>
             <div className="Cards">

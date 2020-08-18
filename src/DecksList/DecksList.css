@@ -19,6 +19,7 @@
 .new-deck-form input {
   border-radius: 50px;
   box-shadow: 0 3px 20px 0 #0000003b;
+  padding-left: 20px;
 }
 
 .new-deck-button {

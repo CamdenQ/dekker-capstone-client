@@ -34,7 +34,7 @@ export default class DeckEditorView extends Component {
       <>
         <Nav />
         <Header />
-        <main>
+        <main style={{ height: '100vh' }}>
           <FilterOptions onChange={this.props.onFilterChange} />
           <div className="cards-sections flex row">
             <DeckContents
@@ -50,9 +50,9 @@ export default class DeckEditorView extends Component {
               history={this.props.history}
             />
             <InfiniteScroll
-              height="100%"
               dataLength={cards.length}
               next={this.props.fetchMoreCards}
+              scrollThreshold={0.1}
               hasMore={cards.length > 1130 ? false : true}
               loader={<h4>Loading...</h4>}>
               <div className="Cards">
