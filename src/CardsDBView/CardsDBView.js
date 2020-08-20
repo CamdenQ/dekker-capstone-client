@@ -11,6 +11,7 @@ import './CardsDBView.css';
 
 export default function CardsDBView(props) {
   const { cards, filteredCards } = props;
+
   return (
     <>
       <Nav />
