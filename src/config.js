@@ -1,5 +1,5 @@
 export default {
-  API_ENDPOINT: 'http://localhost:8000',
+  API_ENDPOINT: 'https://dekker-api.herokuapp.com',
 };
 
-// 'http://localhost:8080 https://blooming-reef-26525.herokuapp.com'
+// 'http://localhost:8000 https://dekker-api.herokuapp.com'
