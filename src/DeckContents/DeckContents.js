@@ -31,9 +31,12 @@ export default function DeckContents(props) {
     );
   }
 
+  console.log(`Cards passed into DeckContents as prop:`);
+  console.log(props.cards);
+
   return (
     <section className="deck-contents">
-      <h2 className="deck-list-title">{props.deckName}</h2>
+      <h2 className="deck-list-title">{props.deck.title}</h2>
       <button
         className="deck-contents-save fa fa-floppy-o"
         onClick={props.onClickSave}></button>

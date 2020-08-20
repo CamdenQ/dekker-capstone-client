@@ -10,10 +10,12 @@ import Nav from '../Nav/Nav';
 import Header from '../Header/Header';
 
 export default class DeckEditorView extends Component {
-  state = { deckID: this.props.match.params.deckID, deck: this.props.deck };
+  // state = { deckID: this.props.match.params.deckID, deck: this.props.deck };
   componentDidMount() {
-    this.props.updateCurrentDeck(this.state.deckID);
-    this.props.setDeckToSelected(this.state.deck);
+    if (this.props.deck.id !== this.props.match.params.deckID) {
+      this.props.updateCurrentDeck(this.props.match.params.deckID);
+      // this.props.setDeckToSelected(this.props.deck);
+    }
   }
 
   render() {

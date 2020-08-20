@@ -3,6 +3,13 @@ import './DeckContentsItem.css';
 
 export default function DeckContentsItem(props) {
   let cardColor = '';
+  if (!props.card) {
+    return (
+      <div>
+        <p>Loading...</p>
+      </div>
+    );
+  }
   if (props.card.types.includes('Artifact')) {
     cardColor = 'Silver';
   } else if (props.card.types.includes('Land')) {

@@ -11,7 +11,7 @@ export default function DecksList(props) {
     <>
       <Nav />
       <Header />
-      <main>
+      <main className="decks-list-main">
         <section className="decks-list">
           <h2>Decks</h2>
           <NewDeckForm

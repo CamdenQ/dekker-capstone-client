@@ -39,7 +39,7 @@ class NewDeckForm extends Component {
             type="text"
             placeholder="Deck Name"
             name="deck-title"
-            autofocus="autofocus"
+            autoFocus="autofocus"
             required
           />
           <div className="new-deck-buttons">

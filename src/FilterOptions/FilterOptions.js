@@ -5,7 +5,7 @@ export default function FilterOptions(props) {
   return (
     <section className="options">
       <div className="container">
-        <ul className="ks-cboxtags">
+        <ul className="filters">
           <li>
             <label>
               <input
@@ -15,7 +15,7 @@ export default function FilterOptions(props) {
                 name="color"
                 value="Red"
                 checked={props.filters.colors.isRed}
-              />
+              />{' '}
               Red
             </label>
           </li>
@@ -28,7 +28,7 @@ export default function FilterOptions(props) {
                 name="color"
                 value="Black"
                 checked={props.filters.colors.isBlack}
-              />
+              />{' '}
               Black
             </label>
           </li>
@@ -41,7 +41,7 @@ export default function FilterOptions(props) {
                 name="color"
                 value="Blue"
                 checked={props.filters.colors.isBlue}
-              />
+              />{' '}
               Blue
             </label>
           </li>
@@ -54,7 +54,7 @@ export default function FilterOptions(props) {
                 name="color"
                 value="White"
                 checked={props.filters.colors.isWhite}
-              />
+              />{' '}
               White
             </label>
           </li>
@@ -67,12 +67,12 @@ export default function FilterOptions(props) {
                 name="color"
                 value="Green"
                 checked={props.filters.colors.isGreen}
-              />
+              />{' '}
               Green
             </label>
           </li>
         </ul>
-        <ul className="ks-cboxtags">
+        <ul className="filters">
           <li>
             <label>
               <input
@@ -82,7 +82,7 @@ export default function FilterOptions(props) {
                 name="type"
                 value="Creature"
                 checked={props.filters.types.isCreature}
-              />
+              />{' '}
               Creatures
             </label>
           </li>
@@ -95,7 +95,7 @@ export default function FilterOptions(props) {
                 name="type"
                 value="Planeswalker"
                 checked={props.filters.types.isPlaneswalker}
-              />
+              />{' '}
               Planeswalkers
             </label>
           </li>
@@ -108,7 +108,7 @@ export default function FilterOptions(props) {
                 name="type"
                 value="Artifact"
                 checked={props.filters.types.isArtifact}
-              />
+              />{' '}
               Artifacts
             </label>
           </li>
@@ -121,7 +121,7 @@ export default function FilterOptions(props) {
                 name="type"
                 value="Enchantment"
                 checked={props.filters.types.isEnchantment}
-              />
+              />{' '}
               Enchantments
             </label>
           </li>
@@ -134,7 +134,7 @@ export default function FilterOptions(props) {
                 name="type"
                 value="Sorcery"
                 checked={props.filters.types.isSorcery}
-              />
+              />{' '}
               Sorcery
             </label>
           </li>
@@ -147,7 +147,7 @@ export default function FilterOptions(props) {
                 name="type"
                 value="Instant"
                 checked={props.filters.types.isInstant}
-              />
+              />{' '}
               Instants
             </label>
           </li>
@@ -160,7 +160,7 @@ export default function FilterOptions(props) {
                 name="type"
                 value="Land"
                 checked={props.filters.types.isLand}
-              />
+              />{' '}
               Lands
             </label>
           </li>

@@ -7,6 +7,7 @@ import DecksList from './DecksList/DecksList';
 import ApiService from './services/api-service';
 import DeckEditorView from './DeckEditorView/DeckEditorView';
 import NotFound from './NotFound/NotFound';
+import history from './history';
 
 import './App.css';
 
@@ -146,9 +147,12 @@ class App extends Component {
     console.log(
       `Type of value passed as deckID into updateCurrentDeck: ${typeof deckID}`
     );
-    ApiService.getDeck(deckID).then((res) =>
-      this.setState({ currentDeck: res })
-    );
+    ApiService.getDeck(deckID)
+      .then((res) => {
+        this.setState({ currentDeck: res });
+        return res;
+      })
+      .then((res) => this.setState({ selected: [...res.contents] }));
   };
 
   setDeckToSelected = (deck) => {
@@ -198,18 +202,35 @@ class App extends Component {
 
   handleClickSaveDeck() {
     const deck = {
+      contents: this.state.selected,
       id: this.state.currentDeck.id,
       title: this.state.currentDeck.title,
-      contents: this.state.selected,
     };
 
-    ApiService.updateDeck(deck);
+    ApiService.updateDeck(deck)
+      .then((res) => console.log(res))
+      .then(() => {
+        for (let i = 0; i < this.state.decks.length; i++) {
+          if (this.state.decks[i].id === deck.id) {
+            return;
+          }
+        }
+        this.setState({ decks: [...this.state.decks, deck] });
+      })
+      .then(() => history.push('/decks'));
   }
 
   handleClickDelete() {
     const id = Number(this.state.currentDeck.id);
 
-    ApiService.deleteDeck(id);
+    ApiService.deleteDeck(id)
+      .then(() => {
+        ApiService.getDecks()
+          .then((res) => this.setState({ decks: res }))
+          .catch((err) => console.log(err));
+      })
+      .then(history.push('/decks'))
+      .catch((err) => console.log(err));
   }
 
   fetchMoreCards = () => {
