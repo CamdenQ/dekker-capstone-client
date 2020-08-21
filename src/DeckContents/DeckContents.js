@@ -31,6 +31,10 @@ export default function DeckContents(props) {
           your deck, or you can press the <span className="fa fa-trash-o" /> to
           delete it.
         </p>
+        <p>
+          Either action (saving or deleting the deck) will return you to the
+          list of decks.
+        </p>
         <p>Warning: deleting your deck cannot be reversed!</p>
       </section>
     );
@@ -63,6 +67,10 @@ export default function DeckContents(props) {
         You can press the <span className="fa fa-floppy-o" /> above to save your
         deck, or you can press the <span className="fa fa-trash-o" /> to delete
         it.
+      </p>
+      <p>
+        Either action (saving or deleting the deck) will return you to the list
+        of decks.
       </p>
       <p>Warning: deleting your deck cannot be reversed!</p>
     </section>
