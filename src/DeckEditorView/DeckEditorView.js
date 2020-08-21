@@ -59,7 +59,7 @@ export default class DeckEditorView extends Component {
               next={this.props.fetchMoreCards}
               scrollThreshold={0.1}
               hasMore={cards.length > 1130 ? false : true}
-              loader={<h4>Loading...</h4>}>
+              loader={<h4>Scroll down to load more cards</h4>}>
               <div className="Cards">
                 {filteredCards.map((card) => (
                   <Card
