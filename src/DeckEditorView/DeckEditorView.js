@@ -29,9 +29,6 @@ export default class DeckEditorView extends Component {
     const { deckID } = this.props.match.params;
     const { cards, filteredCards, selected } = this.props;
 
-    console.log(`Deck passed as prop into DeckEditorView module`);
-    console.table(this.props.deck);
-
     return (
       <>
         <Nav />

@@ -18,8 +18,6 @@ class NewDeckForm extends Component {
     const deck = { title: this.state.title, contents: [] };
 
     ApiService.postDeck(deck).then((res) => {
-      console.log(`New Deck to be set in state:`);
-      console.log(res);
       history.push(`/decks/${res.id}`);
     });
   }

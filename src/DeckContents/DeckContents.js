@@ -3,15 +3,6 @@ import DeckContentsItem from '../DeckContentsItem/DeckContentsItem';
 import './DeckContents.css';
 
 export default function DeckContents(props) {
-  const { deck } = props;
-
-  console.log('Deck passed DeckContents component as prop:');
-  console.table(deck);
-
-  const deckID = Number(props.deckID);
-
-  console.log(`Deck ID in DeckContents: ${deckID}`);
-
   if (!props.deck || !props.deck.id) {
     return (
       <section className="deck-contents">
@@ -44,9 +35,6 @@ export default function DeckContents(props) {
       </section>
     );
   }
-
-  console.log(`Cards passed into DeckContents as prop:`);
-  console.log(props.cards);
 
   return (
     <section className="deck-contents">
