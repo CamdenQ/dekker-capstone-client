@@ -37,7 +37,7 @@ class NewDeckForm extends Component {
             value={this.state.title}
             onChange={this.handleChange}
             type="text"
-            placeholder="Deck Name"
+            placeholder="ex: My Awesome Deck!"
             name="deck-title"
             autoFocus="autofocus"
             required
