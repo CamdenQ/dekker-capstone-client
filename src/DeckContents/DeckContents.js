@@ -23,10 +23,24 @@ export default function DeckContents(props) {
   if (props.selected.length === 0) {
     return (
       <section className="deck-contents">
-        <h2 className="deck-list-title">{props.deckName}</h2>
-        <p>Click a card from the list on the right to add it to your deck!</p>
+        <h2 className="deck-list-title">{props.deck.title}</h2>
+        <button
+          className="deck-contents-save fa fa-floppy-o"
+          onClick={props.onClickSave}></button>
+        <button
+          className="deck-contents-delete fa fa-trash-o"
+          onClick={props.onClickDelete}></button>
+        <p>Welcome to your new deck!</p>
+        <p>It's empty right now, but you can change that!</p>
+        <p>Click a card from the list on the right to add it to your deck.</p>
         {/* prettier-ignore */}
         <p>If you change your mind, you can click the card in this list to remove it!</p>
+        <p>
+          You can press the <span className="fa fa-floppy-o" /> above to save
+          your deck, or you can press the <span className="fa fa-trash-o" /> to
+          delete it.
+        </p>
+        <p>Warning: deleting your deck cannot be reversed!</p>
       </section>
     );
   }
@@ -56,6 +70,13 @@ export default function DeckContents(props) {
           );
         })}
       </ul>
+      <p>Click any card in this list to remove it!</p>
+      <p>
+        You can press the <span className="fa fa-floppy-o" /> above to save your
+        deck, or you can press the <span className="fa fa-trash-o" /> to delete
+        it.
+      </p>
+      <p>Warning: deleting your deck cannot be reversed!</p>
     </section>
   );
 }
